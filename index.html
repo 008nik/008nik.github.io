@@ -185,6 +185,7 @@
     text-decoration: none;
     margin-right: auto;
   }
+  .nav-links { display: flex; align-items: center; gap: 1.3rem; }
   .navpill a.nav-link {
     font-family: var(--mono);
     font-size: 0.78rem;
@@ -210,9 +211,10 @@
   }
   .btn-cv:hover { filter: brightness(1.08); transform: translateY(-1px); }
   @media (max-width: 640px) {
-    .navpill { gap: 0.8rem; flex-wrap: wrap; padding: 0.8rem 1.2rem; }
-    .navpill a.nav-link { font-size: 0.72rem; }
-    header.site.condensed .navpill { padding: 0.55rem 0.8rem 0.55rem 1.1rem; }
+    .navpill { flex-wrap: wrap; gap: 0.7rem 1rem; padding: 0.85rem 1.15rem; }
+    .nav-links { order: 3; flex-basis: 100%; justify-content: center; gap: 1.7rem; }
+    .btn-cv { font-size: 0.72rem; padding: 0.45rem 0.85rem; }
+    header.site.condensed .navpill { padding: 0.7rem 1rem; }
   }
 
   /* ---------- typography ---------- */
@@ -439,6 +441,21 @@
   }
   .impressum { margin-top: 0.8rem; }
   .impressum .mono-meta { font-size: 0.88rem; }
+
+  /* ---------- mobile refinements ---------- */
+  @media (max-width: 640px) {
+    .hero { padding-top: 9.5rem; padding-bottom: 4rem; }
+    .hero h1 { font-size: 2.25rem; }
+    .hero .hero-sub { font-size: 1.05rem; }
+    .hero-facts .fact-chip { font-size: 0.76rem; text-align: center; border-radius: 16px; }
+    .section-head h2 { font-size: 1.85rem; }
+    .card h3 { font-size: 1.4rem; }
+    .about-prose { font-size: 1.06rem; }
+    .contact-panel h2 { font-size: 1.7rem; }
+    .footer-card { padding: 1.5rem 1.2rem 1.6rem; }
+    footer.site .footer-card .mono-meta { font-size: 0.9rem; }
+    .footer-card .impressum .mono-meta { font-size: 0.8rem; }
+  }
 </style>
 </head>
 <body>
@@ -452,9 +469,11 @@
 <header class="site">
   <nav class="navpill glass" aria-label="Primary">
     <a class="site-name" href="#top">Nikhil Shah</a>
-    <a class="nav-link" href="#work">Work</a>
-    <a class="nav-link" href="#method">Method</a>
-    <a class="nav-link" href="#about">About</a>
+    <div class="nav-links">
+      <a class="nav-link" href="#work">Work</a>
+      <a class="nav-link" href="#method">Method</a>
+      <a class="nav-link" href="#about">About</a>
+    </div>
     <a class="btn-cv" href="nikhil-shah-cv.pdf">Download CV</a>
   </nav>
 </header>

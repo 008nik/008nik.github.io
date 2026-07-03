@@ -7,562 +7,546 @@
 <meta name="description" content="Innovation management and foresight researcher at the Applied Innovation Lab, August-Wilhelm-Scheer-Institut. Case studies in AI use cases, agentic workflows and applied research.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛰️</text></svg>">
 <style>
-  /* ---------- reset ---------- */
-  *, *::before, *::after { box-sizing: border-box; }
-  body, h1, h2, h3, p, dl, dd, figure { margin: 0; }
-  ul { margin: 0; padding: 0; }
-
   /* ---------- tokens ---------- */
   :root {
-    --bg: #F6F6F2;
-    --surface: #FDFDFB;
-    --ink: #1B2228;
-    --muted: #5B6670;
-    --faint: #8B959E;
-    --line: rgba(27, 34, 40, 0.14);
-    --line-soft: rgba(27, 34, 40, 0.08);
+    --bg: #F2F3F6;
+    --ink: #16191E;
+    --muted: #454E58;
+    --faint: #666F7A;
     --accent: #C08A2E;
-    --accent-ink: #8F6516;
-    --glow: rgba(192, 138, 46, 0.22);
+    --accent-ink: #7E570E;
+    --glass: rgba(255, 255, 255, 0.52);
+    --glass-strong: rgba(255, 255, 255, 0.68);
+    --glass-edge: rgba(255, 255, 255, 0.65);
+    --glass-shadow: 0 12px 40px rgba(22, 25, 30, 0.10);
+    --chip: rgba(255, 255, 255, 0.45);
+    --amb-gold: rgba(226, 168, 82, 0.45);
+    --amb-indigo: rgba(91, 103, 216, 0.28);
+    --amb-teal: rgba(42, 167, 155, 0.22);
     --serif: "Iowan Old Style", "Palatino Nova", Palatino, "Book Antiqua", Georgia, serif;
-    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    --sans: "Avenir Next", Avenir, Seravek, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
     --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #0F1317;
-      --surface: #151B21;
-      --ink: #E7E9E4;
-      --muted: #97A2AB;
-      --faint: #6B7680;
-      --line: rgba(231, 233, 228, 0.14);
-      --line-soft: rgba(231, 233, 228, 0.07);
+      --bg: #0D1015;
+      --ink: #E9EAEC;
+      --muted: #B4BDC6;
+      --faint: #929CA6;
       --accent: #E2A852;
-      --accent-ink: #E2B067;
-      --glow: rgba(226, 168, 82, 0.16);
+      --accent-ink: #ECBE7C;
+      --glass: rgba(28, 33, 41, 0.55);
+      --glass-strong: rgba(30, 36, 45, 0.75);
+      --glass-edge: rgba(255, 255, 255, 0.12);
+      --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+      --chip: rgba(255, 255, 255, 0.06);
+      --amb-gold: rgba(226, 168, 82, 0.20);
+      --amb-indigo: rgba(91, 103, 216, 0.18);
+      --amb-teal: rgba(42, 167, 155, 0.14);
     }
   }
   :root[data-theme="light"] {
-    --bg: #F6F6F2;
-    --surface: #FDFDFB;
-    --ink: #1B2228;
-    --muted: #5B6670;
-    --faint: #8B959E;
-    --line: rgba(27, 34, 40, 0.14);
-    --line-soft: rgba(27, 34, 40, 0.08);
-    --accent: #C08A2E;
-    --accent-ink: #8F6516;
-    --glow: rgba(192, 138, 46, 0.22);
+    --bg: #F2F3F6; --ink: #16191E; --muted: #454E58; --faint: #666F7A;
+    --accent: #C08A2E; --accent-ink: #7E570E;
+    --glass: rgba(255, 255, 255, 0.52); --glass-strong: rgba(255, 255, 255, 0.68);
+    --glass-edge: rgba(255, 255, 255, 0.65);
+    --glass-shadow: 0 12px 40px rgba(22, 25, 30, 0.10);
+    --chip: rgba(255, 255, 255, 0.45);
+    --amb-gold: rgba(226, 168, 82, 0.45); --amb-indigo: rgba(91, 103, 216, 0.28); --amb-teal: rgba(42, 167, 155, 0.22);
   }
   :root[data-theme="dark"] {
-    --bg: #0F1317;
-    --surface: #151B21;
-    --ink: #E7E9E4;
-    --muted: #97A2AB;
-    --faint: #6B7680;
-    --line: rgba(231, 233, 228, 0.14);
-    --line-soft: rgba(231, 233, 228, 0.07);
-    --accent: #E2A852;
-    --accent-ink: #E2B067;
-    --glow: rgba(226, 168, 82, 0.16);
+    --bg: #0D1015; --ink: #E9EAEC; --muted: #B4BDC6; --faint: #929CA6;
+    --accent: #E2A852; --accent-ink: #ECBE7C;
+    --glass: rgba(28, 33, 41, 0.55); --glass-strong: rgba(30, 36, 45, 0.75);
+    --glass-edge: rgba(255, 255, 255, 0.12);
+    --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+    --chip: rgba(255, 255, 255, 0.06);
+    --amb-gold: rgba(226, 168, 82, 0.20); --amb-indigo: rgba(91, 103, 216, 0.18); --amb-teal: rgba(42, 167, 155, 0.14);
   }
 
   /* ---------- base ---------- */
   html { scroll-behavior: smooth; }
+  dl, dd, ul { margin: 0; padding: 0; }
   body {
     background: var(--bg);
     color: var(--ink);
     font-family: var(--sans);
-    font-size: 1.02rem;
+    font-size: 1.1rem;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
-  ::selection { background: var(--glow); }
+  ::selection { background: var(--amb-gold); }
   a { color: inherit; }
-  a:focus-visible, button:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-    border-radius: 2px;
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 62rem; margin: 0 auto; padding: 0 1.4rem; }
+
+  /* ---------- ambient liquid field ---------- */
+  .field {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  header.site, main, footer.site { position: relative; z-index: 1; }
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    will-change: transform;
+  }
+  .blob.gold {
+    width: 65vw; height: 42vh;
+    left: 8vw; top: 46vh;
+    background: radial-gradient(ellipse at center, var(--amb-gold), transparent 62%);
+    animation: drift-a 46s ease-in-out infinite alternate;
+  }
+  .blob.indigo {
+    width: 46vw; height: 46vw;
+    right: -12vw; top: -14vh;
+    background: radial-gradient(circle at center, var(--amb-indigo), transparent 62%);
+    animation: drift-b 58s ease-in-out infinite alternate;
+  }
+  .blob.teal {
+    width: 38vw; height: 38vw;
+    left: -10vw; bottom: -18vh;
+    background: radial-gradient(circle at center, var(--amb-teal), transparent 62%);
+    animation: drift-c 52s ease-in-out infinite alternate;
+  }
+  /* the horizon, reimagined as light - lives in the hero only */
+  .horizon-glow {
+    position: absolute;
+    left: -10vw; right: -10vw;
+    bottom: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent) 30%, var(--accent) 70%, transparent);
+    opacity: 0.5;
+    box-shadow: 0 0 60px 8px var(--amb-gold);
+    animation: breathe 9s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes drift-a { from { transform: translate(0, 0) scale(1); } to { transform: translate(9vw, -7vh) scale(1.15); } }
+  @keyframes drift-b { from { transform: translate(0, 0) scale(1); } to { transform: translate(-8vw, 9vh) scale(0.9); } }
+  @keyframes drift-c { from { transform: translate(0, 0) scale(1); } to { transform: translate(7vw, -6vh) scale(1.1); } }
+  @keyframes breathe { 0%, 100% { opacity: 0.35; } 50% { opacity: 0.7; } }
+
+  /* ---------- glass material ---------- */
+  .glass {
+    position: relative;
+    background: var(--glass);
+    -webkit-backdrop-filter: blur(16px) saturate(1.6);
+    backdrop-filter: blur(16px) saturate(1.6);
+    border: 1px solid var(--glass-edge);
+    border-radius: 22px;
+    box-shadow: var(--glass-shadow);
+  }
+  .glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(165deg, rgba(255,255,255,0.35), transparent 38%);
+    opacity: 0.6;
+    pointer-events: none;
   }
 
-  .wrap { max-width: 66rem; margin: 0 auto; padding: 0 1.5rem; }
-
-  .eyebrow {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--accent-ink);
-  }
-  .mono-meta {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.05em;
-    color: var(--faint);
-  }
-
-  /* ---------- header ---------- */
+  /* ---------- nav pill ---------- */
   header.site {
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 10;
-    background: color-mix(in srgb, var(--bg) 88%, transparent);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--line-soft);
+    left: 0; right: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    transition: top 0.45s cubic-bezier(0.2, 0.7, 0.2, 1), padding 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
   }
-  .site-inner {
+  .navpill {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.85rem 0;
+    gap: 1.3rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 1.05rem 2.4rem;
+    border-radius: 0;
+    transition: max-width 0.45s cubic-bezier(0.2, 0.7, 0.2, 1), border-radius 0.45s cubic-bezier(0.2, 0.7, 0.2, 1), padding 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .navpill::before { border-radius: inherit; }
+  header.site.condensed { top: 0.9rem; padding: 0 1rem; }
+  header.site.condensed .navpill {
+    max-width: 34rem;
+    border-radius: 999px;
+    padding: 0.55rem 0.8rem 0.55rem 1.3rem;
   }
   .site-name {
     font-family: var(--serif);
-    font-size: 1.05rem;
     font-style: italic;
+    font-size: 1.1rem;
     text-decoration: none;
+    margin-right: auto;
   }
-  nav.primary { display: flex; align-items: center; gap: 1.4rem; }
-  nav.primary a {
+  .navpill a.nav-link {
     font-family: var(--mono);
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     text-decoration: none;
     color: var(--muted);
     transition: color 0.15s ease;
   }
-  nav.primary a:hover { color: var(--ink); }
+  .navpill a.nav-link:hover { color: var(--ink); }
   .btn-cv {
     font-family: var(--mono);
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--accent-ink);
-    border: 1px solid var(--accent);
-    padding: 0.45rem 0.9rem;
-    border-radius: 2px;
     text-decoration: none;
-    transition: background 0.15s ease, color 0.15s ease;
+    color: #fff;
+    background: var(--accent);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    transition: filter 0.15s ease, transform 0.15s ease;
     white-space: nowrap;
   }
-  .btn-cv:hover { background: var(--accent); color: var(--bg); }
+  .btn-cv:hover { filter: brightness(1.08); transform: translateY(-1px); }
   @media (max-width: 640px) {
-    .site-inner { flex-wrap: wrap; row-gap: 0.4rem; }
-    nav.primary { gap: 1rem; }
+    .navpill { gap: 0.8rem; flex-wrap: wrap; padding: 0.8rem 1.2rem; }
+    .navpill a.nav-link { font-size: 0.72rem; }
+    header.site.condensed .navpill { padding: 0.55rem 0.8rem 0.55rem 1.1rem; }
   }
 
-  /* ---------- horizon motif ---------- */
-  .horizon {
-    position: relative;
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, var(--accent) 35%, var(--accent) 65%, transparent 100%);
+  /* ---------- typography ---------- */
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
   }
-  .horizon::before {
-    content: "";
-    position: absolute;
-    left: 15%;
-    right: 15%;
-    bottom: 0;
-    height: 90px;
-    background: radial-gradient(ellipse 60% 100% at 50% 100%, var(--glow), transparent 70%);
-    pointer-events: none;
-  }
-  .horizon-tick {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2.6rem;
-  }
-  .horizon-tick .tick-line {
-    width: 3.5rem;
-    height: 1px;
-    background: linear-gradient(90deg, var(--accent), transparent);
-    flex: none;
-  }
-
-  /* ---------- hero ---------- */
-  .hero { padding: 7rem 0 0; }
-  .hero-inner { padding-bottom: 5.5rem; }
-  .hero .eyebrow { display: block; margin-bottom: 1.6rem; }
+  .mono-meta { font-family: var(--mono); font-size: 0.84rem; letter-spacing: 0.05em; color: var(--faint); }
+  .eyebrow, .case-id, .pbo-label, .fact-tile dt { font-weight: 600; }
+  .mono-meta, .tag, .badge, .fact-chip, .navpill a.nav-link, .btn-cv, .btn { font-weight: 500; }
   h1 {
     font-family: var(--serif);
     font-weight: 500;
-    font-size: clamp(2.3rem, 5.4vw, 3.9rem);
-    line-height: 1.14;
+    font-size: clamp(2.6rem, 6vw, 4.4rem);
+    line-height: 1.12;
     letter-spacing: -0.01em;
     text-wrap: balance;
-    max-width: 21ch;
+    max-width: 20ch;
   }
   h1 em { font-style: italic; color: var(--accent-ink); }
-  .hero-sub {
-    margin-top: 1.8rem;
-    max-width: 54ch;
-    font-size: 1.08rem;
-    color: var(--muted);
-  }
-  .hero-facts {
-    margin-top: 2.6rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem 2.2rem;
-  }
-
-  /* page-load sequence */
-  .rise { opacity: 0; transform: translateY(14px); animation: rise 0.7s ease forwards; }
-  .rise.d1 { animation-delay: 0.08s; }
-  .rise.d2 { animation-delay: 0.2s; }
-  .rise.d3 { animation-delay: 0.34s; }
-  @keyframes rise { to { opacity: 1; transform: none; } }
-  .hero .horizon { transform: scaleX(0); animation: draw 1.1s cubic-bezier(0.3, 0, 0.2, 1) 0.45s forwards; }
-  @keyframes draw { to { transform: scaleX(1); } }
-
-  /* scroll reveals */
-  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .reveal.in { opacity: 1; transform: none; }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .rise, .hero .horizon { animation: none; opacity: 1; transform: none; }
-    .reveal { opacity: 1; transform: none; transition: none; }
-  }
-
-  /* ---------- sections ---------- */
-  section.block { padding: 5.5rem 0; }
-  section.block + section.block { border-top: 0; }
   h2 {
     font-family: var(--serif);
     font-weight: 500;
-    font-size: 1.75rem;
-    letter-spacing: -0.005em;
+    font-size: clamp(2.1rem, 3.4vw, 2.5rem);
     line-height: 1.2;
     text-wrap: balance;
   }
-  .section-head { margin-bottom: 3.2rem; }
-  .section-head p { color: var(--muted); max-width: 52ch; margin-top: 0.7rem; }
 
-  /* ---------- case files ---------- */
-  .case {
-    display: grid;
-    grid-template-columns: 15rem 1fr;
-    gap: 2.5rem;
-    padding: 2.8rem 0;
-    border-top: 1px solid var(--line);
+  /* ---------- hero ---------- */
+  .hero {
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    padding-top: 5rem;
+    padding-bottom: 6rem;
+    position: relative;
+    overflow: hidden;
   }
-  .case:last-of-type { border-bottom: 1px solid var(--line); }
-  .case-side { display: flex; flex-direction: column; gap: 0.9rem; }
-  .case-id {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.14em;
-    color: var(--accent-ink);
+  .hero .wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
-  .case-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .tag {
+  .hero-sub { margin-top: 1.7rem; max-width: 54ch; font-size: 1.16rem; color: var(--muted); }
+  .hero-facts { margin-top: 2.4rem; display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
+  .fact-chip {
     font-family: var(--mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.04em;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
     color: var(--muted);
-    border: 1px solid var(--line);
-    border-radius: 2px;
-    padding: 0.18rem 0.5rem;
-    white-space: nowrap;
+    background: var(--chip);
+    border: 1px solid var(--glass-edge);
+    border-radius: 999px;
+    padding: 0.4rem 0.85rem;
   }
+  /* entrance + reveals: visible by default, JS opts in to the animation (html.anim) */
+  .rise { transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.8s ease; }
+  html.anim .rise { opacity: 0; transform: translateY(16px); filter: blur(6px); }
+  html.anim .rise.d1 { transition-delay: 0.12s; }
+  html.anim .rise.d2 { transition-delay: 0.26s; }
+  html.anim .rise.d3 { transition-delay: 0.42s; }
+  html.anim.go .rise { opacity: 1; transform: none; filter: blur(0); }
+
+  /* liquid scroll reveals: emerge from blur */
+  .reveal { transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.5s ease; }
+  html.anim .reveal { opacity: 0; transform: translateY(18px); filter: blur(8px); }
+  html.anim .reveal.in { opacity: 1; transform: none; filter: blur(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .rise, .reveal { opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important; }
+    .blob, .horizon-glow { animation: none; }
+    .card:hover { transform: none; }
+    header.site, .navpill { transition: none; }
+  }
+
+  /* ---------- sections ---------- */
+  section.block { padding: 4.5rem 0; }
+  .section-head { margin-bottom: 2.2rem; text-align: center; }
+  .section-head p { color: var(--muted); max-width: 52ch; margin: 0.6rem auto 0; }
+  .tick { display: flex; align-items: center; justify-content: center; gap: 0.9rem; margin-bottom: 1rem; }
+  .tick .line { width: 3.2rem; height: 1px; background: linear-gradient(90deg, var(--accent), transparent); flex: none; }
+  .tick::after { content: ""; width: 3.2rem; height: 1px; background: linear-gradient(270deg, var(--accent), transparent); flex: none; }
+
+  /* ---------- case cards ---------- */
+  .cards { display: flex; flex-direction: column; gap: 1.6rem; }
+  .card { padding: 2rem 2.2rem 2.2rem; transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.35s ease; overflow: hidden; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 20px 55px rgba(22, 25, 30, 0.16); }
+  /* specular sweep on hover */
+  .card::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0;
+    left: -60%;
+    width: 45%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,0.22), transparent);
+    transform: skewX(-18deg);
+    transition: left 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+    pointer-events: none;
+  }
+  .card:hover::after { left: 120%; }
+  .card-top { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; margin-bottom: 1rem; }
+  .case-id { font-family: var(--mono); font-size: 0.84rem; letter-spacing: 0.14em; color: var(--accent-ink); }
   .badge {
     font-family: var(--mono);
-    font-size: 0.68rem;
+    font-size: 0.78rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    align-self: flex-start;
-    padding: 0.22rem 0.55rem;
-    border-radius: 2px;
-    background: var(--glow);
     color: var(--accent-ink);
+    background: var(--chip);
+    border: 1px solid var(--glass-edge);
+    border-radius: 999px;
+    padding: 0.22rem 0.65rem;
+    margin-left: auto;
   }
-  .case h3 {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 1.45rem;
-    line-height: 1.25;
-    margin-bottom: 0.4rem;
-    text-wrap: balance;
-  }
-  .case-kicker { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.6rem; }
-  .pbo { display: grid; gap: 1.1rem; }
-  .pbo-row { display: grid; grid-template-columns: 6.2rem 1fr; gap: 1.2rem; align-items: baseline; }
-  .pbo-label {
+  .card h3 { font-family: var(--serif); font-weight: 500; font-size: 1.6rem; line-height: 1.25; margin-bottom: 0.35rem; text-wrap: balance; }
+  .kicker { color: var(--muted); font-size: 1.05rem; margin-bottom: 1.3rem; }
+  .pbo { display: grid; gap: 1rem; }
+  .pbo-row { display: grid; grid-template-columns: 6.6rem 1fr; gap: 1.1rem; align-items: baseline; }
+  .pbo-label { font-family: var(--mono); font-size: 0.84rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .pbo-row p { max-width: 60ch; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.4rem; }
+  .tag {
     font-family: var(--mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--faint);
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    background: var(--chip);
+    border: 1px solid var(--glass-edge);
+    border-radius: 999px;
+    padding: 0.28rem 0.75rem;
+    white-space: nowrap;
   }
-  .pbo-row p { max-width: 58ch; }
-  .pbo-row strong { font-weight: 600; }
-  @media (max-width: 760px) {
-    .case { grid-template-columns: 1fr; gap: 1.4rem; }
-    .case-side { flex-direction: row; flex-wrap: wrap; align-items: center; }
+  @media (max-width: 700px) {
+    .card { padding: 1.5rem 1.3rem 1.7rem; }
     .pbo-row { grid-template-columns: 1fr; gap: 0.25rem; }
+    .badge { margin-left: 0; }
   }
 
   /* ---------- method ---------- */
-  .method-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--line);
-    border: 1px solid var(--line);
-  }
-  .method-cell {
-    background: var(--surface);
-    padding: 2rem 1.7rem 2.2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-  }
+  .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .method-cell { padding: 1.8rem 1.6rem 2rem; display: flex; flex-direction: column; gap: 0.7rem; }
   .method-cell .mono-meta { color: var(--accent-ink); }
-  .method-cell h3 {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 1.25rem;
-    line-height: 1.3;
-  }
-  .method-cell p { color: var(--muted); font-size: 0.95rem; }
-  @media (max-width: 760px) {
-    .method-grid { grid-template-columns: 1fr; }
-  }
+  .method-cell h3 { font-family: var(--serif); font-weight: 500; font-size: 1.35rem; line-height: 1.3; }
+  .method-cell p { color: var(--muted); font-size: 1rem; }
+  @media (max-width: 760px) { .method-grid { grid-template-columns: 1fr; } }
 
-  /* ---------- about ---------- */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 16rem;
-    gap: 3.5rem;
-  }
-  .about-prose p { max-width: 58ch; }
-  .about-prose p + p { margin-top: 1.1rem; }
-  .fact-list { display: flex; flex-direction: column; gap: 1.3rem; }
-  .fact dt {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--faint);
-    margin-bottom: 0.25rem;
-  }
-  .fact dd { font-size: 0.95rem; }
-  .fact dd ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  /* ---------- about: prose, then a row of fact tiles ---------- */
+  .about-prose {
+    font-size: 1.16rem;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 1.2rem;
+    padding: 2.75rem 3rem 3rem;
+    text-align: center;
   }
-  .fact dd li {
-    position: relative;
-    padding-left: 0.95rem;
-    line-height: 1.45;
+  .about-prose p { max-width: 58ch; margin: 0 auto; }
+  @media (max-width: 700px) { .about-prose { padding: 1.6rem 1.4rem 1.8rem; } }
+  .fact-tiles {
+    margin-top: 2.6rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1.1rem;
   }
-  .fact dd li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.68em;
-    width: 0.45rem;
-    height: 1px;
-    background: var(--accent);
-  }
-  @media (max-width: 760px) {
-    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  }
-
-  /* ---------- contact ---------- */
-  .contact { text-align: left; padding: 6rem 0 5rem; }
-  .contact h2 { font-size: clamp(1.9rem, 4vw, 2.7rem); max-width: 24ch; }
-  .contact-sub { color: var(--muted); margin-top: 1rem; max-width: 50ch; }
-  .contact-actions {
-    margin-top: 2.4rem;
+  .fact-tile {
+    padding: 1.5rem 1.5rem 1.6rem;
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.9rem;
+    flex-direction: column;
+    gap: 0.7rem;
   }
-  .btn {
+  .fact-tile dt {
     font-family: var(--mono);
     font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+  }
+  .fact-tile ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+  .fact-tile li {
+    position: relative;
+    padding-left: 0.95rem;
+    font-size: 1.08rem;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+  }
+  .fact-tile li::before { content: ""; position: absolute; left: 0; top: 0.7em; width: 0.45rem; height: 1px; background: var(--accent); }
+
+  /* ---------- contact ---------- */
+  .contact-panel { padding: 3rem 2.6rem 3.2rem; text-align: center; }
+  .contact-panel h2 { font-size: clamp(1.8rem, 3.6vw, 2.5rem); max-width: 24ch; margin: 0 auto; }
+  .contact-sub { color: var(--muted); margin: 0.9rem auto 0; max-width: 50ch; }
+  .actions { margin-top: 2.2rem; display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
+  .btn {
+    font-family: var(--mono);
+    font-size: 0.84rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     text-decoration: none;
     padding: 0.8rem 1.4rem;
-    border-radius: 2px;
-    border: 1px solid var(--line);
+    border-radius: 999px;
+    border: 1px solid var(--glass-edge);
+    background: var(--chip);
     color: var(--ink);
-    transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+    transition: transform 0.15s ease, border-color 0.15s ease, filter 0.15s ease;
   }
-  .btn:hover { border-color: var(--accent); }
-  .btn.primary {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: var(--bg);
-  }
-  .btn.primary:hover { filter: brightness(1.07); }
+  .btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.primary:hover { filter: brightness(1.08); }
+  @media (max-width: 700px) { .contact-panel { padding: 2rem 1.4rem 2.2rem; } }
 
   /* ---------- footer ---------- */
-  footer.site {
-    border-top: 1px solid var(--line-soft);
-    padding: 1.6rem 0 2.2rem;
+  footer.site { padding: 0 0 2.8rem; text-align: center; }
+  .footer-card { padding: 1.9rem 2rem 2.1rem; }
+  .footer-inner { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 2.4rem; }
+  footer.site .mono-meta {
+    font-family: var(--sans);
+    font-size: 0.98rem;
+    letter-spacing: 0.01em;
+    color: var(--muted);
   }
-  .impressum { margin-top: 0.6rem; }
-  .impressum .mono-meta { font-size: 0.68rem; }
-  .footer-inner {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 0.5rem 2rem;
-  }
+  .impressum { margin-top: 0.8rem; }
+  .impressum .mono-meta { font-size: 0.88rem; }
 </style>
 </head>
 <body>
 
+<div class="field" role="presentation">
+  <div class="blob indigo"></div>
+  <div class="blob teal"></div>
+  <div class="blob gold"></div>
+</div>
+
 <header class="site">
-  <div class="wrap site-inner">
+  <nav class="navpill glass" aria-label="Primary">
     <a class="site-name" href="#top">Nikhil Shah</a>
-    <nav class="primary" aria-label="Primary">
-      <a class="nav-link" href="#work">Work</a>
-      <a class="nav-link" href="#method">Method</a>
-      <a class="nav-link" href="#about">About</a>
-      <a class="btn-cv" href="nikhil-shah-cv.pdf">Download CV</a>
-    </nav>
-  </div>
+    <a class="nav-link" href="#work">Work</a>
+    <a class="nav-link" href="#method">Method</a>
+    <a class="nav-link" href="#about">About</a>
+    <a class="btn-cv" href="nikhil-shah-cv.pdf">Download CV</a>
+  </nav>
 </header>
 
 <main id="top">
 
   <!-- ================= HERO ================= -->
   <section class="hero">
-    <div class="wrap hero-inner">
-      <span class="eyebrow rise">Innovation Management · Foresight Research · Saarbrücken, DE</span>
+    <div class="horizon-glow" role="presentation"></div>
+    <div class="wrap">
+      <span class="eyebrow rise" style="display:block; margin-bottom:1.5rem;">Innovation Management · Foresight Research · Saarbrücken, DE</span>
       <h1 class="rise d1">I research where industries are heading - and find the AI use cases <em>worth building</em>.</h1>
-      <p class="rise d2 hero-sub">Innovation management and foresight researcher at the Applied Innovation Lab of the August-Wilhelm-Scheer-Institut. I go deep on a business first: interviews, workshops, scenario methods. Then I identify and prototype the AI use cases that fit how it runs. Increasingly, I build them myself.</p>
+      <p class="hero-sub rise d2">Innovation management and foresight researcher at the Applied Innovation Lab of the August-Wilhelm-Scheer-Institut. I go deep on a business first: interviews, workshops, scenario methods. Then I identify and prototype the AI use cases that fit how it runs. Increasingly, I build them myself.</p>
       <div class="hero-facts rise d3">
-        <span class="mono-meta">M.Sc. Global Foresight &amp; Technology Mgmt</span>
-        <span class="mono-meta">M.Eng. Wirtschaftsingenieurwesen (in progress)</span>
-        <span class="mono-meta">Agentic AI workflows in daily use</span>
-        <span class="mono-meta">EN · DE</span>
+        <span class="fact-chip">M.Sc. Global Foresight &amp; Technology Mgmt</span>
+        <span class="fact-chip">M.Eng. Wirtschaftsingenieurwesen (in progress)</span>
+        <span class="fact-chip">Agentic AI workflows in daily use</span>
+        <span class="fact-chip">EN · DE</span>
       </div>
     </div>
-    <div class="horizon" role="presentation"></div>
   </section>
 
   <!-- ================= WORK ================= -->
   <section class="block" id="work">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="horizon-tick"><span class="tick-line"></span><span class="eyebrow">Selected work · 2024-2026</span></div>
+        <div class="tick"><span class="line"></span><span class="eyebrow">Selected work · 2024-2026</span></div>
         <h2>Case files</h2>
         <p>A mix of client engagements and personal systems. Client work is anonymized; the personal projects run on my machines every day.</p>
       </div>
 
-      <!-- FRIDAY -->
-      <article class="case reveal">
-        <div class="case-side">
-          <span class="case-id">CASE 01 · PERSONAL</span>
-          <div class="case-tags">
-            <span class="tag">Python</span><span class="tag">Whisper STT</span><span class="tag">Claude agents</span><span class="tag">ElevenLabs</span>
-          </div>
-          <span class="badge">Running daily</span>
-        </div>
-        <div class="case-body">
+      <div class="cards">
+        <article class="card glass reveal">
+          <div class="card-top"><span class="case-id">CASE 01 · PERSONAL</span><span class="badge">Running daily</span></div>
           <h3>FRIDAY, a voice assistant that actually does the work</h3>
-          <p class="case-kicker">A JARVIS-style voice AI, built end-to-end and always on.</p>
+          <p class="kicker">A JARVIS-style voice AI, built end-to-end and always on.</p>
           <div class="pbo">
             <div class="pbo-row"><span class="pbo-label">Problem</span><p>I wanted hands-free, conversational access to my entire project knowledge base. Not another chatbot in a browser tab.</p></div>
             <div class="pbo-row"><span class="pbo-label">Built</span><p>Wake-word activation, local speech-to-text, Claude reasoning with my knowledge vault as memory, and natural voice replies. On top of that sits a <strong>work mode</strong>: one spoken instruction kicks off a real autonomous coding task.</p></div>
             <div class="pbo-row"><span class="pbo-label">Outcome</span><p>Runs always-on on my Mac. I hold full spoken conversations about my projects and hand off real tasks by voice.</p></div>
           </div>
-        </div>
-      </article>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Whisper STT</span><span class="tag">Claude agents</span><span class="tag">ElevenLabs</span></div>
+        </article>
 
-      <!-- Cortex -->
-      <article class="case reveal">
-        <div class="case-side">
-          <span class="case-id">CASE 02 · PERSONAL</span>
-          <div class="case-tags">
-            <span class="tag">Obsidian</span><span class="tag">Claude Code</span><span class="tag">Agent workflows</span><span class="tag">Dashboards</span>
-          </div>
-          <span class="badge">Running daily</span>
-        </div>
-        <div class="case-body">
+        <article class="card glass reveal">
+          <div class="card-top"><span class="case-id">CASE 02 · PERSONAL</span><span class="badge">Running daily</span></div>
           <h3>Cortex, an AI-operated personal operating system</h3>
-          <p class="case-kicker">Everything I work on, tracked and partly run by agents.</p>
+          <p class="kicker">Everything I work on, tracked and partly run by agents.</p>
           <div class="pbo">
             <div class="pbo-row"><span class="pbo-label">Problem</span><p>A dozen parallel workstreams (research, client projects, university, applications) and no single place where their state lived.</p></div>
             <div class="pbo-row"><span class="pbo-label">Built</span><p>A knowledge vault operated by AI agents: living mission-control dashboards with project lanes and timelines, automated session notes, and a morning triage agent that reads my inbox and pre-sorts opportunities before I wake up.</p></div>
             <div class="pbo-row"><span class="pbo-label">Outcome</span><p>One glance shows the state of everything. The boring parts of staying organized no longer cost me time.</p></div>
           </div>
-        </div>
-      </article>
+          <div class="tags"><span class="tag">Obsidian</span><span class="tag">Claude Code</span><span class="tag">Agent workflows</span><span class="tag">Dashboards</span></div>
+        </article>
 
-      <!-- Regulation monitoring -->
-      <article class="case reveal">
-        <div class="case-side">
-          <span class="case-id">CASE 03 · CLIENT · ANONYMIZED</span>
-          <div class="case-tags">
-            <span class="tag">Market research</span><span class="tag">Competitor analysis</span><span class="tag">Business model</span>
-          </div>
-          <span class="badge">Letter of intent signed</span>
-        </div>
-        <div class="case-body">
+        <article class="card glass reveal">
+          <div class="card-top"><span class="case-id">CASE 03 · CLIENT · ANONYMIZED</span><span class="badge">Letter of intent signed</span></div>
           <h3>AI regulation monitoring for a German specialist publisher</h3>
-          <p class="case-kicker">The market research behind a new AI product.</p>
+          <p class="kicker">The market research behind a new AI product.</p>
           <div class="pbo">
             <div class="pbo-row"><span class="pbo-label">Problem</span><p>Compliance teams at mid-sized companies drown in regulatory change. A specialist publisher wanted to know whether an AI product could carry that load, and whether anyone would pay for it.</p></div>
             <div class="pbo-row"><span class="pbo-label">My part</span><p>I ran the market research: market sizing, competitor analysis and business-model options for the product. The findings fed the go/no-go decision and the product's positioning. The prototype itself was built by the engineering team.</p></div>
             <div class="pbo-row"><span class="pbo-label">Outcome</span><p>Prototype validated with target users; an established publisher signed a letter of intent.</p></div>
           </div>
-        </div>
-      </article>
+          <div class="tags"><span class="tag">Market research</span><span class="tag">Competitor analysis</span><span class="tag">Business model</span></div>
+        </article>
 
-      <!-- Lead research -->
-      <article class="case reveal">
-        <div class="case-side">
-          <span class="case-id">CASE 04 · CLIENT · ANONYMIZED</span>
-          <div class="case-tags">
-            <span class="tag">Agent orchestration</span><span class="tag">Human-in-the-loop</span><span class="tag">CRM</span>
-          </div>
-          <span class="badge">In active use</span>
-        </div>
-        <div class="case-body">
+        <article class="card glass reveal">
+          <div class="card-top"><span class="case-id">CASE 04 · CLIENT · ANONYMIZED</span><span class="badge">In active use</span></div>
           <h3>Agentic lead research with human-in-the-loop gates</h3>
-          <p class="case-kicker">Multi-agent pipelines that find real people, and a human who approves every record.</p>
+          <p class="kicker">Multi-agent pipelines that find real people, and a human who approves every record.</p>
           <div class="pbo">
             <div class="pbo-row"><span class="pbo-label">Problem</span><p>B2B teams need named, verified decision-makers at target companies. Manual research doesn't scale; fully automated research can't be trusted.</p></div>
             <div class="pbo-row"><span class="pbo-label">Built</span><p>A multi-agent research pipeline with strict pass/fail validation criteria (current employer verified, role matched by what the person does rather than by title keywords) and a mandatory human review step before anything is written to the CRM.</p></div>
             <div class="pbo-row"><span class="pbo-label">Outcome</span><p>Verified contact discovery at a fraction of the manual effort, without sacrificing data quality. The human-in-the-loop design is the point, not a compromise.</p></div>
           </div>
-        </div>
-      </article>
+          <div class="tags"><span class="tag">Agent orchestration</span><span class="tag">Human-in-the-loop</span><span class="tag">CRM</span></div>
+        </article>
 
-      <!-- IoT -->
-      <article class="case reveal">
-        <div class="case-side">
-          <span class="case-id">CASE 05 · UNIVERSITY × INDUSTRY</span>
-          <div class="case-tags">
-            <span class="tag">IoT</span><span class="tag">MQTT</span><span class="tag">Live sensor data</span>
-          </div>
-          <span class="badge">Presented at Pixida, Munich</span>
-        </div>
-        <div class="case-body">
+        <article class="card glass reveal">
+          <div class="card-top"><span class="case-id">CASE 05 · UNIVERSITY × INDUSTRY</span><span class="badge">Presented at Pixida, Munich</span></div>
           <h3>Eco-Score dashboard on live IoT sensor data</h3>
-          <p class="case-kicker">Making the energy behavior of real devices visible in real time.</p>
+          <p class="kicker">Making the energy behavior of real devices visible in real time.</p>
           <div class="pbo">
             <div class="pbo-row"><span class="pbo-label">Problem</span><p>Device energy consumption is invisible until the bill arrives. The industry partner wanted a live eco-score that a non-engineer could read, instead of raw telemetry.</p></div>
             <div class="pbo-row"><span class="pbo-label">Built</span><p>A real-time dashboard that scores device energy behavior from live sensor streams over MQTT. Team project, delivered against a running backend.</p></div>
             <div class="pbo-row"><span class="pbo-label">Outcome</span><p>Presented to the industry partner at Pixida in Munich, 2026.</p></div>
           </div>
-        </div>
-      </article>
+          <div class="tags"><span class="tag">IoT</span><span class="tag">MQTT</span><span class="tag">Live sensor data</span></div>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -570,21 +554,21 @@
   <section class="block" id="method">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="horizon-tick"><span class="tick-line"></span><span class="eyebrow">How I work</span></div>
+        <div class="tick"><span class="line"></span><span class="eyebrow">How I work</span></div>
         <h2>Understand deeply, then ship</h2>
       </div>
       <div class="method-grid reveal">
-        <div class="method-cell">
+        <div class="method-cell glass">
           <span class="mono-meta">I.</span>
           <h3>The business comes first</h3>
           <p>Stakeholder interviews, on-site workshops, and the foresight toolkit: Delphi studies, scenario analysis, horizon scanning. Before any system gets built, I can explain the business to the people who run it.</p>
         </div>
-        <div class="method-cell">
+        <div class="method-cell glass">
           <span class="mono-meta">II.</span>
           <h3>Prototypes over slideware</h3>
           <p>Working AI workflows in weeks instead of strategy decks in quarters. A demo the client can touch settles arguments that meetings never will.</p>
         </div>
-        <div class="method-cell">
+        <div class="method-cell glass">
           <span class="mono-meta">III.</span>
           <h3>Humans stay in the loop</h3>
           <p>Automation with validation gates: agents do the volume, people make the calls that matter. Systems earn trust by being checkable, not by being impressive.</p>
@@ -597,82 +581,93 @@
   <section class="block" id="about">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="horizon-tick"><span class="tick-line"></span><span class="eyebrow">Background</span></div>
+        <div class="tick"><span class="line"></span><span class="eyebrow">Background</span></div>
         <h2>Engineer by training, futurist by degree, builder by habit</h2>
       </div>
-      <div class="about-grid reveal">
-        <div class="about-prose">
-          <p>I started as an automobile engineer in India, moved to Germany for a master's in Innovation Management with a focus on Global Foresight &amp; Technology Management, and stayed. Since then I've worked on the production floor of a German carmaker and run Delphi studies at a foresight institute. My master's thesis ended up feeding directly into an insurer's digital strategy.</p>
-          <p>Today I work in the Applied Innovation Lab at the August-Wilhelm-Scheer-Institut in Saarbrücken, running innovation and AI-strategy engagements with industry clients. Alongside the job I'm completing a second master's in Wirtschaftsingenieurwesen (industrial engineering and management). Outside work hours I build the systems I wish existed, from voice assistants to agent-operated dashboards. The two halves feed each other: research tells me what's worth building; building keeps the research honest.</p>
-        </div>
-        <dl class="fact-list">
-          <div class="fact"><dt>Education</dt><dd><ul>
-            <li>M.Eng. Wirtschaftsingenieurwesen, TH Ingolstadt (in progress)</li>
-            <li>M.Sc. Global Foresight &amp; Technology Mgmt, TH Ingolstadt</li>
-            <li>B.Tech Automobile Engineering</li>
-          </ul></dd></div>
-          <div class="fact"><dt>Certification</dt><dd><ul>
-            <li>CAPM, Project Management Institute</li>
-          </ul></dd></div>
-          <div class="fact"><dt>Languages</dt><dd><ul>
-            <li>English, German</li>
-            <li>Hindi, Gujarati</li>
-          </ul></dd></div>
-          <div class="fact"><dt>Based in</dt><dd><ul>
-            <li>Saarbrücken, Germany</li>
-          </ul></dd></div>
-          <div class="fact"><dt>Next build</dt><dd><ul>
-            <li>Agentic automation for the innovation-management process</li>
-          </ul></dd></div>
-        </dl>
+      <div class="about-prose glass reveal">
+        <p>I started as an automobile engineer in India, moved to Germany for a master's in Innovation Management with a focus on Global Foresight &amp; Technology Management, and stayed. Since then I've worked on the production floor of a German carmaker and run Delphi studies at a foresight institute. My master's thesis ended up feeding directly into an insurer's digital strategy.</p>
+        <p>Today I work in the Applied Innovation Lab at the August-Wilhelm-Scheer-Institut in Saarbrücken, running innovation and AI-strategy engagements with industry clients. Alongside the job I'm completing a second master's in Wirtschaftsingenieurwesen (industrial engineering and management). Outside work hours I build the systems I wish existed, from voice assistants to agent-operated dashboards. The two halves feed each other: research tells me what's worth building; building keeps the research honest.</p>
       </div>
+      <dl class="fact-tiles reveal">
+        <div class="fact-tile glass"><dt>Education</dt><dd><ul>
+          <li>M.Eng. Wirtschaftsingenieurwesen, TH Ingolstadt (in progress)</li>
+          <li>M.Sc. Global Foresight &amp; Technology Mgmt, TH Ingolstadt</li>
+          <li>B.Tech Automobile Engineering</li>
+        </ul></dd></div>
+        <div class="fact-tile glass"><dt>Certification</dt><dd><ul>
+          <li>CAPM, Project Management Institute</li>
+        </ul></dd></div>
+        <div class="fact-tile glass"><dt>Languages</dt><dd><ul>
+          <li>English, German</li>
+          <li>Hindi, Gujarati</li>
+        </ul></dd></div>
+        <div class="fact-tile glass"><dt>Based in</dt><dd><ul>
+          <li>Saarbrücken, Germany</li>
+        </ul></dd></div>
+        <div class="fact-tile glass"><dt>Next build</dt><dd><ul>
+          <li>Agentic automation for the innovation-management process</li>
+        </ul></dd></div>
+      </dl>
     </div>
   </section>
 
   <!-- ================= CONTACT ================= -->
-  <section class="contact" id="contact">
-    <div class="wrap reveal">
-      <div class="horizon-tick"><span class="tick-line"></span><span class="eyebrow">Contact</span></div>
-      <h2>If you're building something that needs both the map and the machine, talk to me.</h2>
-      <p class="contact-sub">Write me about AI transformation, agentic systems, or a problem that doesn't fit a category yet. The classic CV lives here too.</p>
-      <div class="contact-actions">
-        <a class="btn primary" href="mailto:nikhilshah1308@gmail.com">Email me</a>
-        <a class="btn" href="https://www.linkedin.com/in/nikhil-shah-researcher" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="nikhil-shah-cv.pdf">Download CV (PDF)</a>
+  <section class="block" id="contact">
+    <div class="wrap">
+      <div class="contact-panel glass reveal">
+        <div class="tick"><span class="line"></span><span class="eyebrow">Contact</span></div>
+        <h2>If you're building something that needs both the map and the machine, talk to me.</h2>
+        <p class="contact-sub">Write me about AI transformation, agentic systems, or a problem that doesn't fit a category yet. The classic CV lives here too.</p>
+        <div class="actions">
+          <a class="btn primary" href="mailto:nikhilshah1308@gmail.com">Email me</a>
+          <a class="btn" href="https://www.linkedin.com/in/nikhil-shah-researcher" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="nikhil-shah-cv.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+        </div>
       </div>
     </div>
   </section>
-
-  <div class="horizon" role="presentation"></div>
 </main>
 
 <footer class="site">
-  <div class="wrap footer-inner">
-    <span class="mono-meta">© 2026 Nikhil Shah · Saarbrücken</span>
-    <span class="mono-meta">Built with my own AI stack, obviously.</span>
-  </div>
-  <div class="wrap impressum">
-    <span class="mono-meta">Impressum · Verantwortlich für den Inhalt (responsible for content): Nikhil Shah · Poststr. 13, 66115 Saarbrücken, Germany · nikhilshah1308@gmail.com</span>
+  <div class="wrap">
+    <div class="footer-card glass">
+      <div class="footer-inner">
+        <span class="mono-meta">© 2026 Nikhil Shah · Saarbrücken</span>
+        <span class="mono-meta">Built with my own AI stack, obviously.</span>
+      </div>
+      <div class="impressum">
+        <span class="mono-meta">Impressum · Verantwortlich für den Inhalt (responsible for content): Nikhil Shah · Poststr. 13, 66115 Saarbrücken, Germany · nikhilshah1308@gmail.com</span>
+      </div>
+    </div>
   </div>
 </footer>
 
 <script>
   (function () {
     var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var targets = document.querySelectorAll(".reveal");
-    if (reduced || !("IntersectionObserver" in window)) {
-      targets.forEach(function (el) { el.classList.add("in"); });
-      return;
-    }
+    if (reduced || !("IntersectionObserver" in window)) { return; }
+    var root = document.documentElement;
+    root.classList.add("anim");
+    /* two paths to visibility: rAF (animates on first real paint) + timer fallback
+       (fires even when the iframe is occluded and rAF is frozen) */
+    var go = function () { root.classList.add("go"); };
+    requestAnimationFrame(function () { requestAnimationFrame(go); });
+    setTimeout(go, 900);
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add("in");
-          io.unobserve(e.target);
-        }
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
-    targets.forEach(function (el) { io.observe(el); });
+    }, { threshold: 0.02, rootMargin: "0px 0px 15% 0px" });
+    document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+  })();
+
+  (function () {
+    var hdr = document.querySelector("header.site");
+    var onScroll = function () {
+      hdr.classList.toggle("condensed", window.scrollY > 48);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
   })();
 </script>
 </body>
